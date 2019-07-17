@@ -7,11 +7,11 @@ class App extends Component {
 
   async componentDidMount() {
 
-    window.dir = '/tutorial'
-    const dir = window.dir
-    
+    //window.dir = '/tutorial'
+    //const dir = window.dir
+    const dir = '/tutorial'
     console.log(dir);
-    await window.pfs.mkdir(dir);
+   // await window.pfs.mkdir(dir);
     // Behold - it is empty!
     await window.pfs.readdir(dir);
 
@@ -22,7 +22,7 @@ class App extends Component {
 
 
     // await fs.readdir(dir);
-
+    git.plugins.set('fs', window.fs)
     await git.clone({
        dir,
        corsProxy: 'https://cors.isomorphic-git.org',
@@ -32,6 +32,10 @@ class App extends Component {
        depth: 10
      });
 
+     await window.pfs.readdir(dir);
+     const logs = await git.log({dir})
+     console.log(logs);
+     
   }
 
   render() {

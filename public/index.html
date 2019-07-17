@@ -30,10 +30,10 @@
     <script src="https://unpkg.com/isomorphic-git"></script>
     <script>
     // Initialize isomorphic-git with a file system
-    window.fs = new LightningFS('fs')
-    git.plugins.set('fs', window.fs)
+    fs = new LightningFS('fs')
+    git.plugins.set('fs', fs)
     // I prefer using the Promisified version honestly
-    window.pfs = window.fs.promises
+    pfs = fs.promises
     </script>
   <!--
       This HTML file is a template.
